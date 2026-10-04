@@ -1,0 +1,20 @@
+{
+  "claims": [
+    {"claim": "ArchiMate 4 — текущая версия спецификации (анонс 2026-04-28, элементы ~60→40)", "class": "version", "pub_date": "2026-05"},
+    {"claim": "LeanIX meta model v4: 12 default + 3 optional fact sheet types, предустановленные subtypes", "class": "version", "pub_date": "2026-10"},
+    {"claim": "LeanIX v3→v4 delta: Platform new; Project→Initiative; User Group→Organization; Process→Business Context", "class": "version", "pub_date": "2026-10"},
+    {"claim": "Backstage catalog: 9 kinds, Template apiVersion v1beta2, остальные v1alpha1", "class": "version", "pub_date": "2026-10"},
+    {"claim": "Ardoq Metamodel Constraints: Guided (GA), Strict (Beta)", "class": "version", "pub_date": "2026-07"},
+    {"claim": "Ardoq REST API v1 + новый API v2 в developer portal", "class": "version", "pub_date": "2026-08"},
+    {"claim": "Ardoq: ArchiMate 3.1 шаблоны out-of-the-box", "class": "version", "pub_date": "2025-07"},
+    {"claim": "Archi tool поддерживает ArchiMate 3.2 (без v4)", "class": "version", "pub_date": "2026-10"},
+    {"claim": "Essential release channels: cloud monthly / platform ~quarterly с изменениями метамодели", "class": "doc", "pub_date": "2025-06"},
+    {"claim": "Ardoq Solutions: 27 packaged solutions в 5 категориях", "class": "number", "pub_date": "2026-10"},
+    {"claim": "Seven Principles for Creating a Great EA Metamodel (Ardoq design philosophy)", "class": "pattern", "pub_date": "2025-02"},
+    {"claim": "SCIM RFC 7643: extension URNs, additive-only, IANA registry", "class": "standard", "pub_date": "2015-06"},
+    {"claim": "Kubernetes API conventions: namespaced keys, alpha→beta→GA graduation", "class": "standard", "pub_date": "2026-10"},
+    {"claim": "Ardoq rigid→flexible конверсия необратима", "class": "failure", "pub_date": "2025-05"},
+    {"claim": "LeanIX custom type deletion — необратимый каскад", "class": "failure", "pub_date": "2026-10"},
+    {"claim": "Backstage: добавление custom kind — very large impact", "class": "practice", "pub_date": "2026-10"}
+  ]
+}

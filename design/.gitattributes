@@ -1,0 +1,10 @@
+# Файлы доски сливает драйвер канваса — по id узлов, нитей и записей, а не по строкам. Драйвер ставит `canvas-setup`
+# в .git/config дизайнера; у копии без канваса git сливает эти файлы обычным построчным слиянием.
+# Список — явный: реестр своих блоков board/kit-app.json и деревья board/blocks/ — не файлы доски для драйвера.
+board/canvas.json            merge=canvas
+board/comments.json          merge=canvas
+board/changelog.json         merge=canvas
+board/changelog-archive.json merge=canvas
+board/state.json             merge=canvas
+# CHANGES.md — без union: git дробит конфликт двух записей по общим строкам и перемешал бы их, а следующая передача
+# переписала бы чужую запись (QA, v1.0.0). Конфликт в нём разрешают, оставляя обе записи целиком — свою сверху.

@@ -1,0 +1,102 @@
+{
+  "$schema": "../.canvas/schemas/canvas.config.schema.json",
+  "version": 1,
+  "board": "board",
+  "backend": "web",
+  "kit": "heroui",
+  "build": "build",
+  "app": {
+    "package": "com.example.itlandscapev2",
+    "avd": "",
+    "dir": "app",
+    "sources": [
+      "app/src",
+      "app/mocks",
+      "app/contracts"
+    ],
+    "stringsRes": null,
+    "localeFolders": {},
+    "courses": null,
+    "defaultLocale": "ru-RU",
+    "defaultCourse": "",
+    "port": 4173,
+    "build": "npm run build",
+    "serve": "npx vite preview --port 4173 --strictPort --host 127.0.0.1",
+    "exporter": "inject",
+    "urlTemplate": "#{route}?{query}"
+  },
+  "routes": null,
+  "docs": {
+    "dir": "specs",
+    "glob": "[0-9][0-9]-*.md"
+  },
+  "qa": null,
+  "web": {
+    "iconsScan": [],
+    "appBlocks": "board/kit-app.json"
+  },
+  "check": {
+    "failStale": true
+  },
+  "gates": [
+    "cd app && npm run typecheck",
+    "cd app && npm test",
+    "python3 {canvas}board.py components"
+  ],
+  "gatesFull": [
+    "python3 {canvas}board.py check --complete",
+    "python3 {canvas}board.py fidelity",
+    "python3 {canvas}board.py protowalk",
+    "python3 {canvas}board.py appwalk",
+    "python3 {canvas}board.py uilint",
+    "python3 {canvas}board.py shotdiff",
+    "python3 {canvas}board.py langcheck"
+  ],
+  "i18n": {
+    "dir": "app/src/i18n",
+    "allow": [],
+    "call": [
+      "t"
+    ]
+  },
+  "screen": {
+    "command": "python3 {canvas}board.py screen {ids}",
+    "boards": [],
+    "pre": [
+      {
+        "title": "проверка типов",
+        "run": "npm run typecheck",
+        "cwd": "app",
+        "fix": "API кита — из документации (MCP кита, навык), не по памяти; нет node_modules — сначала cd design/app && npm ci"
+      },
+      {
+        "title": "тесты своих компонентов",
+        "run": "npm test",
+        "cwd": "app",
+        "fix": "тесты рядом с компонентом: src/components/<имя>/<имя>.test.tsx (canvas-ui-rules/rules/components.md п. 6)"
+      }
+    ],
+    "_comment": "самопроверка экрана board.py screen <id> (вся доска — all): command — своя обёртка проекта ({ids} — экраны, {canvas} — путь канваса); boards — конфиги всех досок проекта (веб и устройство, два приложения); pre — команды до съёмки из каталога этого конфига (design/), cwd — от него же, каждая один раз (красная — съёмки нет); prepare — сборка или стенд перед съёмкой доски: {\"title\", \"run\", \"cwd\", \"check\" — есть ли окружение (красная — доска пропущена «нет окружения» с этой командой)}; у веба сборку app.build делает сама съёмка, prepare не нужен"
+  },
+  "srcGuard": {
+    "navigate": [
+      "\\benv\\.go\\(\\s*(['\"])(?P<to>[\\w-]+)\\1",
+      "\\bnavigate\\(\\s*(['\"`])(?P<to>[#/][^'\"`?]*)(?:\\?[^'\"`]*)?\\1",
+      "<(?:Link|NavLink)\\b(?:=>|[^>])*?\\bto=\\{?\\s*(['\"`])(?P<to>[#/][^'\"`?]*)(?:\\?[^'\"`]*)?\\1",
+      "\\bhref=\\{?\\s*(['\"`])(?P<to>#/[^'\"`?]*)(?:\\?[^'\"`]*)?\\1",
+      "\\blocation\\.hash\\s*=\\s*(['\"`])(?P<to>#?/[^'\"`?]*)(?:\\?[^'\"`]*)?\\1"
+    ],
+    "back": [
+      "(?<![\\w-])back(?:To|Href|Url|Path|Route)?=\\{?\\s*(['\"`])(?P<to>[^'\"`?{}$\\s]+)(?:\\?[^'\"`]*)?\\1"
+    ],
+    "stateRead": "(?:(?<=\\benv\\.)|(?<![\\w$.]))state\\s*===?\\s*(['\"])(?P<state>[\\w-]+)\\1",
+    "data": [
+      "app/mocks"
+    ],
+    "shell": [
+      "Shell"
+    ],
+    "_comment": "сторож исходников (board.py check, строки «исходники: …»): navigate — регулярки перехода в коде экрана с группой to (здесь env.go('<экран>') заготовки канваса, React Router и hash-адреса; переход без ребра на доске — WARN, [] — выключить), back — литеральное «назад» экрана с группой to (здесь литерал пропа back/backTo/backHref оболочки или шапки): в экран входят нажатием с двух и больше экранов, а «назад» — всегда один — WARN «назад туда, откуда пришли»; «назад» истории и цель через переменную не судятся, [] — литералы не искать, stateRead — чтение состояния адреса ?state=<id> (группа state: состояние, которого нет слоем, — FAIL), data — каталоги данных макетов, где искать маркеры съёмки (от design/), shell — имена компонента-оболочки экрана (у заготовки — Shell) (aria-* и data-* на ней — FAIL), own — свои компоненты, которым законно нужен сырой <button> (своя навигация, которой нет в ките; сырой <button> в остальных — FAIL), allow — файлы вне правил разметки кита, level — \"warn\" или {\"<правило>\": \"fail|warn|off\"}, waive — узкие отступления с причиной [{\"rule\", \"text\", \"reason\"}]: находка с этим текстом — WARN; \"srcGuard\": false — выключить сторож"
+  },
+  "_comment": "Конфиг дизайн-пакета design/ (v1.0.0): все пути — от каталога этого файла (design/): доска — board/, спека — specs/, макеты — app/ (app.dir); канвас — клон .canvas/ в корне репозитория, вне git. $schema — схема ключей этого файла (python3 .canvas/board.py config --check сверяет конфиг с ней: неверный тип — FAIL, неизвестный ключ — WARN с ближайшим известным). gates — команды проекта из каталога design/, {canvas} — путь канваса от него (board.py components — сторож реестра specs/03-components.md); check.failStale — true (у веба по умолчанию: Chrome для пересъёмки есть везде): кадр, снятый до последней правки кода экрана (agent.sources узла), — FAIL сторожа доски в board.py gates и при коммите (gates --pre-commit), а не WARN; backend web: кадры и дерево блоков снимает безголовый Chrome по адресам маршрутов (`capture.web.path` + параметры измерений и состояния); app.exporter: inject — экспортёр дерева блоков канваса (.canvas/backends/web/exporter) съёмка встраивает в страницу сама, в макетах ни строки; app — страница ставит его импортом (`install()` из пакета) и отдаёт window.__canvasExport; app.urlTemplate — адрес кадра после app.url: {route} — маршрут узла, {query} — все параметры, или по имени {theme} {locale} {platform} {layout} {state} {chrome} (path-роутер: \"/{route}?theme={theme}&lang={locale}\"); app.themeVars — переменные темы кита для дерева блоков: без ключа — из профиля кита (kit; у HeroUI — его переменные), свой кит без профиля или сверх него — список имён или словарь «роль → переменная» (заменяет переменные профиля целиком) ({\"accent\": \"--primary\", \"danger\": \"--destructive\"} у shadcn/ui); app.packageManager — npm, pnpm, yarn или bun (без ключа — по lock-файлу; зависимости ставятся строго по нему); app.dist — каталог сборки, если не dist (Create React App — build); длинная страница целиком — capture.web.fullPage: true в манифесте доски (у кадра, узла, профиля или в шапке); i18n.dir — каталог словарей <язык>.json для board.py langcheck, i18n.allow — названия и числа без перевода. app.shared — общее для всех экранов доски: правка такого файла старит все кадры доски, правка файла экрана — только его кадры (board.py screen и shoot --stale снимают только устаревшие, что и почему — board.py stale); без ключа общим считается всё под app.sources, кроме файлов экранов (agent.sources узлов) и словарей (i18n.dir), плюс словарь базового языка, в корне app.dir — lock-файл, index.html, public/ и assets/, конфиги сборки и стилей (Vite, Tailwind, PostCSS, Babel, Metro): переснимется лишнее, но нужное не пропустится; остальное вне app.sources без ключа не видно. С ключом общее — только перечисленное (файл вне списка и вне экранов кадры не старит, board.py stale его назовёт): перечисляйте всё общее — тему, данные, оболочку — или не задавайте ключ. Папки своих элементов (src/components/<kebab>/) не перечисляйте ни с ключом, ни без: экраны, где элемент стоит, канвас находит по импортам и переснимает только их (v1.2.0); элемент в оболочке общий сам; пример: \"shared\": [\"app/src/theme.ts\", \"app/src/data.ts\", \"app/src/App.tsx\", \"app/index.html\", \"app/package-lock.json\"]."
+}

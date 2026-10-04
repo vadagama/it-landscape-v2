@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "capture": {
+    "title": "it-landscape-v2",
+    "package": "com.example.itlandscapev2",
+    "avd": "",
+    "locale": "ru-RU",
+    "appVersion": "0.1.0",
+    "shotWidth": 540,
+    "platform": "web",
+    "layout": "mobile",
+    "device": {
+      "id": "browser",
+      "title": "Safari на iPhone 402×874",
+      "widthDp": 402,
+      "heightDp": 874,
+      "density": 3.0
+    },
+    "dimensions": {
+      "theme": [
+        "light",
+        "dark"
+      ],
+      "locale": [
+        "ru-RU"
+      ],
+      "platform": [
+        "web"
+      ],
+      "device": [
+        "browser"
+      ],
+      "layout": [
+        "mobile",
+        "tablet",
+        "desktop"
+      ]
+    },
+    "profiles": {
+      "tablet": {
+        "title": "Планшет 768×1024",
+        "layout": "tablet",
+        "width": 768,
+        "height": 1024
+      },
+      "desktop": {
+        "title": "Десктоп 1440×900",
+        "layout": "desktop",
+        "width": 1440,
+        "height": 900
+      }
+    }
+  },
+  "states": {},
+  "flows": [],
+  "nodes": [],
+  "edges": []
+}

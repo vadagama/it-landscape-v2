@@ -1,0 +1,5 @@
+# зависимости и сборка — не в git: программист ставит их `npm ci`, канвас собирает `npm run build`
+node_modules/
+dist/
+*.tsbuildinfo
+.DS_Store

@@ -1,0 +1,22 @@
+{
+  "claims": [
+    {"claim": "cytoscape v3.34.3 (11.2k★), sigma.js v4 beta (12.2k★), react-force-graph v1.48.3 (3.3k★), xyflow @xyflow/react 12.12.0 (38.6k★, org-use платный Pro)", "class": "version", "pub_date": "2026-09"},
+    {"claim": "TW BYOR v1.2.0: переименование кольца Hold→Caution; веб-копия TW отстаёт", "class": "version", "pub_date": "2026-04"},
+    {"claim": "AOE радар: репозиторий AOEpeople/techradar (68★), v4.0.0 на Next.js, поиск Fuse.js", "class": "version", "pub_date": "2026-09"},
+    {"claim": "Backstage: ES≥8.19, ES7 снят с поддержки; PG search engine PG≥12, «ten thousands of indexed documents»", "class": "version", "pub_date": "2026-10"},
+    {"claim": "@backstage-community/plugin-adr: активен (коммиты 2026-09-24), версии пакетов 0.31.0/0.26.1/0.25.0", "class": "version", "pub_date": "2026-09"},
+    {"claim": "MADR v4.0.0 (2024-09-17) — текущая версия; Backstage-плагин парсит только 2.x/3.x", "class": "version", "pub_date": "2024-09"},
+    {"claim": "RJSF v6.11.0 — текущая версия документации", "class": "version", "pub_date": "2026-10"},
+    {"claim": "PG18 — текущая документация; PG16 в списке поддерживаемых; russian text-search config встроен (перечислить \\dF на живом инстансе)", "class": "version", "pub_date": "2026-10"},
+    {"claim": "Ardoq semantic search в GA (июль 2026, rollout via CSM); search history и saved searches отсутствуют", "class": "pattern", "pub_date": "2026-07"},
+    {"claim": "Ardoq Field Groups — beta (2026-08-25, flag-gated per org)", "class": "pattern", "pub_date": "2026-08"},
+    {"claim": "Backstage NFS: экспорты под /alpha, официально рекомендуемый путь, create-app генерирует NFS", "class": "pattern", "pub_date": "2026-10"},
+    {"claim": "Ardoq Data Inventory остаётся «snappy» с сотнями тысяч компонентов", "class": "number", "pub_date": "2026-09"},
+    {"claim": "Backstage: единственный roadmap-плагин (11★), quarterly planning — 0 репозиториев", "class": "number", "pub_date": "2026-10"},
+    {"claim": "Ardoq Timeline view: механика бары/ромбы и мин-окна layout'ов (1w..3y)", "class": "doc", "pub_date": "2026-08"},
+    {"claim": "Backstage docs: страницы Scaffolder custom-field-extensions и extension-blueprints отдают 404 после реструктуризации", "class": "doc", "pub_date": "2026-10"},
+    {"claim": "Ardoq Scenarios: «support Block Diagram and Pages view styles only»", "class": "failure", "pub_date": "2026-09"},
+    {"claim": "LeanIX UI-конфигурация: самсервис только видимость/обязательность, метамодель = vendor Configuration Add-Ons", "class": "doc", "pub_date": "2020-09"},
+    {"claim": "LeanIX инвентарь/фильтры/оболочка Fact Sheet/Aggregated Obsolescence Risk (архивные снапшоты 2021)", "class": "doc", "pub_date": "2021-04"}
+  ]
+}

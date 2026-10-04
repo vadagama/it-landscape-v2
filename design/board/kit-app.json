@@ -1,0 +1,27 @@
+{
+  "paths": {
+    "APP": "../app/src/"
+  },
+  "blocks": {
+    "SideNav": {
+      "name": "Боковая навигация",
+      "file": "${APP}screens/shared.tsx"
+    },
+    "BottomNav": {
+      "name": "Нижняя навигация",
+      "file": "${APP}screens/shared.tsx"
+    },
+    "PageHeader": {
+      "name": "Шапка раздела",
+      "file": "${APP}screens/shared.tsx"
+    },
+    "Footer": {
+      "name": "Панель действия",
+      "file": "${APP}screens/shared.tsx"
+    },
+    "Story": {
+      "name": "История элемента",
+      "file": "${APP}components/stories.tsx"
+    }
+  }
+}
